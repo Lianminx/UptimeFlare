@@ -1,9 +1,20 @@
-name = "uptimeflare_worker"
+name = "lianmin-uptime-worker"
 main = "src/index.ts"
 compatibility_date = "2025-04-02"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[d1_databases]]
 binding = "UPTIMEFLARE_D1"
-database_name = "uptimeflare_d1"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_name = "lianmin-uptime"
+database_id = "8fe1dd1e-aba1-466a-a67d-95d90168a01c"
+
+[[durable_objects.bindings]]
+name = "REMOTE_CHECKER_DO"
+class_name = "RemoteChecker"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RemoteChecker"]
+
+[triggers]
+crons = ["* * * * *"]
